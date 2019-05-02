@@ -30,12 +30,13 @@ async function getTickers() {
     let tickers = [];
     $('#stocks  > tbody > tr > td > a').each(function (i, element) {
         const text = element.childNodes[0].data;
-        tickers.push(text);
+        const ticker = text.split('-')[0].trim();
+        tickers.push(ticker);
     });
 
     for (let index = 0; index < tickers.length; index++) {
         const t = tickers[index];
-        await getStatistics(t + '.IS');
+        // await getStatistics(t + '.IS');
         await getStatisticsIsYatirim(t);
     }
 }
